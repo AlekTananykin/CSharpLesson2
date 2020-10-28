@@ -17,6 +17,8 @@ namespace Task1
         {
             try
             {
+                Console.WriteLine("Программа нахождения минимального " +
+                    "из трёх чисел");
                 Console.Write("Введите три целых числа \r\nПервоее число: ");
                 int number1 = int.Parse(Console.ReadLine());
                 Console.Write("Второе число: ");
