@@ -28,7 +28,8 @@ namespace Task4
 
             try
             {
-                if (Autorization(expectedLogin, expectedPassword, autorizeTryCount))
+                if (Autorization(
+                    expectedLogin, expectedPassword, autorizeTryCount))
                     Console.WriteLine("\r\nВы авторизованы. ");
                 else
                     Console.WriteLine("\r\nВы не авторизованы. ");
@@ -77,6 +78,7 @@ namespace Task4
         {
             while (0 < autorizeTryCount--)
             {
+                Console.WriteLine();
                 string login = ReadText("Логин: ");
                 string password = ReadPassword("Пароль: ");
 
@@ -84,10 +86,24 @@ namespace Task4
                     return true;
 
                 if (0 < autorizeTryCount)
-                    Console.WriteLine("\r\nНе верный логин или пароль. " +
-                        "Осталось ещё {0} попыток.", autorizeTryCount);
+                    Console.WriteLine(
+                        CreateWrongPassMessage(autorizeTryCount));
             }
             return false;
+        }
+
+        private static string CreateWrongPassMessage(int autorizeTryCount)
+        {
+            StringBuilder message = new StringBuilder();
+            message.Append("\r\nНе верный логин или пароль. ");
+
+            if (1 == autorizeTryCount)
+                message.Append("Осталась ещё 1 попытка.");
+            else
+                message.Append(String.Format("Осталось ещё {0} попытки.", 
+                    autorizeTryCount));
+            
+            return message.ToString();
         }
     }
 }

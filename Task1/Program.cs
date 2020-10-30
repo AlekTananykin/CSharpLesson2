@@ -19,12 +19,10 @@ namespace Task1
             {
                 Console.WriteLine("Программа нахождения минимального " +
                     "из трёх чисел");
-                Console.Write("Введите три целых числа \r\nПервоее число: ");
-                int number1 = int.Parse(Console.ReadLine());
-                Console.Write("Второе число: ");
-                int number2 = int.Parse(Console.ReadLine());
-                Console.Write("Третье число: ");
-                int number3 = int.Parse(Console.ReadLine());
+                Console.WriteLine("Введите три целых числа");
+                int number1 = ReadInteger("Первоее число: ");
+                int number2 = ReadInteger("Второе число: ");
+                int number3 = ReadInteger("Третье число: ");
 
                 Console.WriteLine("Минимальное число {0}", 
                     MinNumber(number1, number2, number3));
@@ -43,6 +41,12 @@ namespace Task1
                 return Math.Min(number1, number3);
 
             return Math.Min(number2, number3);
+        }
+
+        private static int ReadInteger(string msg)
+        {
+            Console.Write(msg);
+            return int.Parse(Console.ReadLine());
         }
     }
 }
